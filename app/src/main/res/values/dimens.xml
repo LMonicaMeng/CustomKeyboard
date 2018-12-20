@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="customkeyboard_horizontal">1px</dimen>
+    <dimen name="customkeyboard_vertical">1px</dimen>
+    <dimen name="customkeyboard_line">1px</dimen>
+    <dimen name="keyboard_button_height">63dp</dimen>
+</resources>
