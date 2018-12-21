@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="keyboard">
+        //键盘上数字尺寸
+        <attr name="keyboardTextSize" format="dimension"/>
+        //键盘字体颜色
+        <attr name="keyboardTextColor" format="color"/>
+        //键盘按键间距
+        <attr name="keyboardSpacing" format="dimension"/>
+        //键盘间隔线颜色
+        <attr name="keyboardLineColor" format="color"/>
+        //删除键背景颜色
+        <attr name="cancleBackground" format="color"/>
+        //按压时按键背景颜色
+        <attr name="pressBackground" format="color"/>
+        //键盘高度
+        <attr name="keyboardHeight" format="dimension"/>
+    </declare-styleable>
+</resources>

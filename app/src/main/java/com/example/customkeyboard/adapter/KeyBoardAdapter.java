@@ -1,7 +1,6 @@
-package com.example.administrator.myapplication.customkeyboard.widget;
+package com.example.customkeyboard.widget;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -19,10 +18,12 @@ import java.util.Map;
 public class KeyBoardAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Map<String, String>> valueList;
+    private Map<String, Object> attrsMap;
 
-    public KeyBoardAdapter(Context mContext, ArrayList<Map<String, String>> valueList) {
+    public KeyBoardAdapter(Context mContext, ArrayList<Map<String, String>> valueList, Map<String, Object> attrsMap) {
         this.mContext = mContext;
         this.valueList = valueList;
+        this.attrsMap = attrsMap;
     }
 
     @Override
@@ -59,13 +60,18 @@ public class KeyBoardAdapter extends BaseAdapter {
             viewHolder.btnKey.setText(valueList.get(position).get("name"));
         } else if (position == 11) {
             viewHolder.btnKey.setBackgroundResource(R.drawable.keyboard_delete);
-            viewHolder.btnKey.setBackgroundColor(mContext.getResources().getColor(R.color.cancle_key));
+            int cancleBackground = (int) attrsMap.get("cancleBackground");
+            viewHolder.btnKey.setBackgroundColor(cancleBackground);
             viewHolder.imgDelete.setVisibility(View.VISIBLE);
         } else {
             viewHolder.imgDelete.setVisibility(View.INVISIBLE);
             viewHolder.btnKey.setVisibility(View.VISIBLE);
             viewHolder.btnKey.setText(valueList.get(position).get("name"));
         }
+//        int keyboardTextSize = (int) attrsMap.get("keyboardTextSize");
+//        viewHolder.btnKey.setText(keyboardTextSize);
+        int keyboardTextColor = (int) attrsMap.get("keyboardTextColor");
+        viewHolder.btnKey.setTextColor(keyboardTextColor);
         return convertView;
     }
 

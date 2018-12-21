@@ -1,4 +1,4 @@
-package com.example.administrator.myapplication.customkeyboard;
+package com.example.customkeyboard;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,18 +6,12 @@ import android.text.Editable;
 import android.text.InputType;
 import android.view.View;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.GridView;
 
 import com.example.administrator.myapplication.R;
-import com.example.administrator.myapplication.customkeyboard.widget.CustomKeyboardView;
+import com.example.customkeyboard.widget.CustomKeyboardView;
 
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.Map;
 
 public class CustomeKeyBoardActivity extends AppCompatActivity {
     private CustomKeyboardView customKeyboardView;
