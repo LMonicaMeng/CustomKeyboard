@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#efefef">
 
 
@@ -21,11 +21,13 @@
         android:id="@+id/customKeyboardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:keyboardSpacing ="5dp"
-        app:keyboardLineColor = "@android:color/holo_red_dark"
-        app:cancleBackground="@android:color/holo_blue_bright"
-        app:keyboardTextSize ="30dp"
-        app:keyboardTextColor = "@color/cancle_key"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"
+        app:cancleBackground="@color/cancle_key"
+        app:keyboardHeight="380dp"
+        app:keyboardLineColor="@color/keyboad_bg"
+        app:keyboardSpacing="1dp"
+        app:keyboardTextColor="@color/key_color"
+        app:keyboardTextSize="24sp"
+        />
 
 </RelativeLayout>

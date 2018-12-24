@@ -26,7 +26,7 @@ public class CustomKeyboardView extends RelativeLayout {
     private float keyboardSpacing;
     private int keyboardLineColor;
     private int keyboardTextColor;
-    private int keyboardTextSize;
+    private float keyboardTextSize;
     private int cancleBackground;
     private int pressBackground;
     private float keyboardHeight;
@@ -54,7 +54,7 @@ public class CustomKeyboardView extends RelativeLayout {
     private void init(AttributeSet attrs) {
         attrsMap = new HashMap<>();
         TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.keyboard);
-        keyboardTextSize = (int) typedArray.getDimension(R.styleable.keyboard_keyboardTextSize, 1);
+        keyboardTextSize = typedArray.getDimension(R.styleable.keyboard_keyboardTextSize, 1);
         keyboardTextColor = typedArray.getColor(R.styleable.keyboard_keyboardTextColor, Color.BLACK);
         keyboardSpacing = typedArray.getDimension(R.styleable.keyboard_keyboardSpacing, 1);
         keyboardLineColor = typedArray.getColor(R.styleable.keyboard_keyboardLineColor, context.getResources().getColor(R.color.keyboad_bg));
@@ -91,11 +91,13 @@ public class CustomKeyboardView extends RelativeLayout {
     }
 
     private void setupView() {
-        com.example.customkeyboard.widget.KeyBoardAdapter keyBoardAdapter = new com.example.customkeyboard.widget.KeyBoardAdapter(context, valueList,attrsMap);
+        final com.example.customkeyboard.widget.KeyBoardAdapter keyBoardAdapter = new com.example.customkeyboard.widget.KeyBoardAdapter(context, valueList,attrsMap);
         gridView.setAdapter(keyBoardAdapter);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                keyBoardAdapter.setSeclection(position);
+                keyBoardAdapter.notifyDataSetChanged();
                 if (position < 11 && position != 10) {//点击0-9按钮
                     if (position == 9) {
                         mOnClickNumListener.onNumClick(String.valueOf(0));

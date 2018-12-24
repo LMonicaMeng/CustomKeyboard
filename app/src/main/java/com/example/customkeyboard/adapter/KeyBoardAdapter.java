@@ -1,6 +1,7 @@
 package com.example.customkeyboard.widget;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -8,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.administrator.myapplication.R;
+import com.example.customkeyboard.util.DensityUtils;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -19,11 +21,21 @@ public class KeyBoardAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Map<String, String>> valueList;
     private Map<String, Object> attrsMap;
+    private int clickTemp = -1;//标识被选择的item
+    private int[] clickedList;//这个数组用来存放item的点击状态
 
     public KeyBoardAdapter(Context mContext, ArrayList<Map<String, String>> valueList, Map<String, Object> attrsMap) {
         this.mContext = mContext;
         this.valueList = valueList;
         this.attrsMap = attrsMap;
+        clickedList = new int[valueList.size()];
+        for (int i = 0; i < valueList.size(); i++) {
+            clickedList[i] = 0;      //初始化item点击状态的数组
+        }
+    }
+
+    public void setSeclection(int posiTion) {
+        clickTemp = posiTion;
     }
 
     @Override
@@ -54,6 +66,16 @@ public class KeyBoardAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
+        int pressBackground = (int) attrsMap.get("pressBackground");
+        if (clickTemp == position) {    //根据点击的Item当前状态设置背景
+            if (clickedList[position] == 0) {
+                viewHolder.btnKey.setBackgroundColor(pressBackground);
+                clickedList[position] = 1;
+            } else {
+                viewHolder.btnKey.setBackgroundColor(Color.WHITE);
+                clickedList[position] = 0;
+            }
+        }
         if (position == 10) {
             viewHolder.imgDelete.setVisibility(View.INVISIBLE);
             viewHolder.btnKey.setVisibility(View.VISIBLE);
@@ -68,8 +90,11 @@ public class KeyBoardAdapter extends BaseAdapter {
             viewHolder.btnKey.setVisibility(View.VISIBLE);
             viewHolder.btnKey.setText(valueList.get(position).get("name"));
         }
-//        int keyboardTextSize = (int) attrsMap.get("keyboardTextSize");
-//        viewHolder.btnKey.setText(keyboardTextSize);
+
+        float keyboardHeight = (float) attrsMap.get("keyboardHeight");
+        viewHolder.btnKey.setHeight(DensityUtils.dp2px(mContext, keyboardHeight / 4));
+        float keyboardTextSize = (float) attrsMap.get("keyboardTextSize");
+        viewHolder.btnKey.setTextSize(keyboardTextSize);
         int keyboardTextColor = (int) attrsMap.get("keyboardTextColor");
         viewHolder.btnKey.setTextColor(keyboardTextColor);
         return convertView;

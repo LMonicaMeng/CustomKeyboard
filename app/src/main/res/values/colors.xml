@@ -7,4 +7,5 @@
     <color name="keyboad_bg">#cccccc</color>
     <color name="keyboard_press_bg">#e0e0e0</color>
     <color name="cancle_key">#f6f6f6</color>
+    <color name="key_color">#333333</color>
 </resources>
