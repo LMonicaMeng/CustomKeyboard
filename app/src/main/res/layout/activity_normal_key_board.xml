@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:cancleBackground="@color/cancle_key"
-        app:keyboardHeight="380dp"
+        app:keyboardHeight="500dp"
         app:keyboardLineColor="@color/keyboad_bg"
         app:keyboardSpacing="1dp"
         app:keyboardTextColor="@color/key_color"

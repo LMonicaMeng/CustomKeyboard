@@ -82,7 +82,9 @@ public class KeyBoardAdapter extends BaseAdapter {
         }
 
         float keyboardHeight = (float) attrsMap.get("keyboardHeight");
-        viewHolder.btnKey.setHeight(DensityUtils.dp2px(mContext, keyboardHeight / 4));
+        ViewGroup.LayoutParams layoutParams = viewHolder.btnKey.getLayoutParams();
+        layoutParams.height = DensityUtils.dp2px(mContext,keyboardHeight/4);
+        viewHolder.btnKey.setLayoutParams(layoutParams);
         float keyboardTextSize = (float) attrsMap.get("keyboardTextSize");
         viewHolder.btnKey.setTextSize(keyboardTextSize);
         int keyboardTextColor = (int) attrsMap.get("keyboardTextColor");
