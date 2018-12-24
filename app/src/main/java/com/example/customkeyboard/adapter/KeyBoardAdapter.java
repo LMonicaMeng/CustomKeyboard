@@ -66,16 +66,6 @@ public class KeyBoardAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
 
-        int pressBackground = (int) attrsMap.get("pressBackground");
-        if (clickTemp == position) {    //根据点击的Item当前状态设置背景
-            if (clickedList[position] == 0) {
-                viewHolder.btnKey.setBackgroundColor(pressBackground);
-                clickedList[position] = 1;
-            } else {
-                viewHolder.btnKey.setBackgroundColor(Color.WHITE);
-                clickedList[position] = 0;
-            }
-        }
         if (position == 10) {
             viewHolder.imgDelete.setVisibility(View.INVISIBLE);
             viewHolder.btnKey.setVisibility(View.VISIBLE);
